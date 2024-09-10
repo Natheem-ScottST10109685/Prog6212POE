@@ -1,0 +1,14 @@
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\bin\Debug\ST10109685_PROG6212POE.exe.config
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\bin\Debug\ST10109685_PROG6212POE.exe
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\bin\Debug\ST10109685_PROG6212POE.pdb
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.csproj.AssemblyReference.cache
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\MainWindow.baml
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\MainWindow.g.cs
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\App.g.cs
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE_MarkupCompile.cache
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.g.resources
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.Properties.Resources.resources
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.csproj.GenerateResource.cache
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.csproj.CoreCompileInputs.cache
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.exe
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.pdb
