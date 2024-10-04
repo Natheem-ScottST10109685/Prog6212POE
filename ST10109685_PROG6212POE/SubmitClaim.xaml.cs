@@ -90,12 +90,12 @@ namespace ST10109685_PROG6212POE
         /// </summary>
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            // Close the SubmitClaim window
-            this.Close();
-
             // Reopen the MainWindow by creating a new instance
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+
+            // Close the SubmitClaim window
+            this.Close();
         }
 
         /// <summary>
