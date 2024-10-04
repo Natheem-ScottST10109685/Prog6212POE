@@ -24,5 +24,47 @@ namespace ST10109685_PROG6212POE
         {
             InitializeComponent();
         }
+
+        // Event handler for "Submit New Claim" button click
+        private void BtnSubmitClaims_Click(object sender, RoutedEventArgs e)
+        {
+            SubmitClaim submitClaimWindow = new SubmitClaim();
+            submitClaimWindow.Show();
+
+            this.Close();
+        }
+
+        private void BtnViewClaims_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnGenerateReport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSubmitClaims1_Click(object sender, RoutedEventArgs e)
+        {
+            SubmitClaim submitClaimWindow = new SubmitClaim();
+            submitClaimWindow.Show();
+
+            this.Close();
+        }
+
+        private void BtnView_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnReports_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

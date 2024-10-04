@@ -12,3 +12,5 @@ C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_
 C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.csproj.CoreCompileInputs.cache
 C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.exe
 C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\ST10109685_PROG6212POE.pdb
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\SubmitClaim.baml
+C:\Users\Natheem Scott\source\repos\ST10109685_PROG6212POE\obj\Debug\SubmitClaim.g.cs
