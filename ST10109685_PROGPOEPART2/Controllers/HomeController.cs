@@ -7,7 +7,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly string claimDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+        private readonly string claimDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims"; // Use your own File Path as this won't work if you use mine
         private readonly IClaimService _claimService;
 
         public HomeController(ILogger<HomeController> logger, IClaimService claimService)
@@ -43,7 +43,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
 
         public IActionResult CoordMange()
         {
-            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims"; // Use your own File Path as this won't work if you use mine
             var claims = new List<ClaimModel>();
 
             string[] claimFiles = Directory.GetFiles(claimsDirectory, "*.txt");
@@ -86,7 +86,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
         public IActionResult SubmitClaim(int hoursWorked, decimal hourlyRate, string notes, IFormFile supportingDocument)
         {
             // Directory path where claims will be saved
-            string claimDirectory = "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\LecturerClaims";
+            string claimDirectory = "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\LecturerClaims"; // Use your own File Path as this won't work if you use mine
 
             // Ensure the directory exists
             if (!Directory.Exists(claimDirectory))
@@ -142,7 +142,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
         [HttpPost]
         public IActionResult ApproveReject(string fileName, string action)
         {
-            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims"; // Use your own File Path as this won't work if you use mine
             string filePath = Path.Combine(claimsDirectory, fileName);
 
             // Read the existing content
