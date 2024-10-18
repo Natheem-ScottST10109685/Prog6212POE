@@ -1,0 +1,61 @@
+﻿@model List<ST10109685_PROGPOEPART2.Models.ClaimModel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Claims</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Claims to Review</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Lecturer Name</th>
+                    <th>Hours Worked</th>
+                    <th>Hourly Rate</th>
+                    <th>Notes</th>
+                    <th>Status</th> <!-- Add status column -->
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var claim in Model)
+                {
+                    <tr>
+                        <td>@claim.Id</td>
+                        <td>@claim.LecturerName</td>
+                        <td>@claim.HoursWorked</td>
+                        <td>@claim.HourlyRate</td>
+                        <td>@claim.Notes</td>
+                        <td>@claim.Status</td> <!-- Display claim status -->
+                        <td>
+                            <button class="btn btn-success" onclick="approveClaim(@claim.Id)">Approve</button>
+                            <button class="btn btn-danger" onclick="rejectClaim(@claim.Id)">Reject</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- Script for handling claim approval/rejection -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function approveClaim(claimId) {
+            $.post("/Home/ApproveClaim", { id: claimId }, function (response) {
+                location.reload(); // Reload the page to reflect the updated status
+            });
+        }
+
+        function rejectClaim(claimId) {
+            $.post("/Home/RejectClaim", { id: claimId }, function (response) {
+                location.reload(); // Reload the page to reflect the updated status
+            });
+        }
+    </script>
+</body>
+</html>

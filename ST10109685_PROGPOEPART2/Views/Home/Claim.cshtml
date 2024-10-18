@@ -1,0 +1,92 @@
+﻿@* @using System.Security.Claims *@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Monthly Claim System (CMCS)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+
+        .navbar {
+            background-color: #2c5282;
+            padding: 1rem;
+        }
+
+            .navbar a {
+                color: white;
+                margin: 0 1rem;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .btn {
+            width: 100%;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-blue {
+            background-color: #2c5282;
+            color: white;
+        }
+
+            .btn-blue:hover {
+                background-color: #2b6cb0;
+            }
+        h1 {
+            color: #2c5282;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="~/Home/Index">Home</a>
+        <a href="~/Home/Claim">Claim</a>
+        <a href="~/Home/ViewAll">View All</a>
+        <a href="~/Home/Report">Report</a>
+    </nav>
+    <div class="container">
+        <h1 class="text-2xl font-bold mb-4 text-center text-darkslateblue">Contract Monthly Claim System (CMCS)</h1>
+        <button id="btnSubmitClaims" class="btn btn-blue font-bold py-2 px-4 rounded">
+            Submit New Claim
+        </button>
+        <button id="btnViewClaims" class="btn btn-blue font-bold py-2 px-4 rounded">
+            View Claims
+        </button>
+        <button id="btnGenerateReport" class="btn btn-blue font-bold py-2 px-4 rounded">
+            Generate Report
+        </button>
+    </div>
+
+    <script>
+        // JavaScript to redirect to the NewClaim.cshtml when "Submit New Claim" is clicked
+        document.getElementById("btnSubmitClaims").onclick = function () {
+            window.location.href = '@Url.Action("NewClaim", "Home")';
+        };
+    </script>
+</body>
+</html>
