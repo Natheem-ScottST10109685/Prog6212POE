@@ -16,7 +16,7 @@ namespace ST10109685_PROGPOEPART2.Models
         [Required]
         [Range(0.01, 10000)] // Reasonable range for hourly rate
         public decimal HourlyRate { get; set; }
-
+        public string Notes { get; set; }
         public string AdditionalNotes { get; set; }
         public string Status { get; set; }
         public string FileName { get; set; }
@@ -25,6 +25,8 @@ namespace ST10109685_PROGPOEPART2.Models
     // Then, let's define the IClaimService interface
     public interface IClaimService
     {
+        List<ClaimModel> GetAllClaims();
+        Task<string?> GetAllClaimsAsync();
         ClaimModel GetClaimById(int id);
         void UpdateClaim(ClaimModel claim);
     }

@@ -1,3 +1,4 @@
+using ST10109685_PROGPOEPART2.Models;
 using ST10109685_PROGPOEPART2.Services;
 
 namespace ST10109685_PROGPOEPART2
@@ -11,7 +12,7 @@ namespace ST10109685_PROGPOEPART2
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IClaimService>(provider =>
-    new ClaimService(@"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims"));
+            new ClaimService(@"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims"));
 
             var app = builder.Build();
 

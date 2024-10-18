@@ -31,6 +31,11 @@ namespace ST10109685_PROGPOEPART2.Controllers
             return View();
         }
 
+        public IActionResult ViewAll()
+        {
+            return View();
+        }
+
         public IActionResult CoordDashboard()
         {
             return View();

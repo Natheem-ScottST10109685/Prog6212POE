@@ -151,5 +151,21 @@ namespace ST10109685_PROGPOEPART2.Services
 
             await File.WriteAllLinesAsync(filePath, updatedLines);
         }
+
+        public List<ClaimModel> GetAllClaims()
+        {
+            // Call the asynchronous method and wait for it to complete
+            return GetAllClaimsAsync().GetAwaiter().GetResult();
+        }
+
+        public ClaimModel GetClaimById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateClaim(ClaimModel claim)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
