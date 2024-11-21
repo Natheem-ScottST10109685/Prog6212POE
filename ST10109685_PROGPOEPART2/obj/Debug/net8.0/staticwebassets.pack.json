@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ST10109685_PROGPOEPART2.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ST10109685_PROGPOEPART2.bundle.scp.css"
+      "PackagePath": "staticwebassets\\ST10109685_PROGPOEPART2.523xaljygp.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\wwwroot\\css\\site.css",
@@ -243,6 +243,10 @@
     {
       "Id": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ST10109685_PROGPOEPART2.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ST10109685_PROGPOEPART2.Microsoft.AspNetCore.StaticWebAssets.props",

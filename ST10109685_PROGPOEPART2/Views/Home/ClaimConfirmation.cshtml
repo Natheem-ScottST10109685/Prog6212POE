@@ -46,13 +46,26 @@
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <a href="/">Home</a>
+        @if (User.IsInRole("Lecturer"))
+        {
+            <a href="/Lecturer/Claim">Claim</a>
+            <a href="/Lecturer/ViewAll">View All</a>
+        }
+        else if (User.IsInRole("ProgrammeCoordinator") || User.IsInRole("AcademicManager"))
+        {
+            <a href="/Coordinator/CoordDashboard">Dashboard</a>
+            <a href="/Coordinator/CoordMange">Manage</a>
+        }
+    </nav>
     <div class="container">
         <h1>Claim Submitted Successfully</h1>
         <p class="lead mb-4">Your claim has been saved and will be reviewed by a coordinator.</p>
         <h2 class="h4 mb-4">Would you like to submit another claim?</h2>
         <div class="mt-4">
-            <a href="/Home/Claim" class="btn btn-primary">Submit Another Claim</a>
-            <a href="/Home/Index" class="btn btn-secondary">Return to Home</a>
+            <a href="/Home/NewClaim" class="btn btn-primary">Submit Another Claim</a>
+            <a href="/Home/LecturerDashBoard" class="btn btn-secondary">Return to DashBoard</a>
         </div>
     </div>
 </body>

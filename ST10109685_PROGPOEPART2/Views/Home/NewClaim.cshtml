@@ -51,22 +51,6 @@
 <body>
     <div class="container">
         <h1 class="text-2xl font-bold mb-4 text-center">Submit New Claim</h1>
-
-        <form method="post" action="/Home/SubmitClaim">
-            <div class="form-group">
-                <label for="hoursWorked">Hours Worked</label>
-                <input type="number" class="form-control" id="hoursWorked" name="hoursWorked" required>
-            </div>
-
-            <div class="form-group">
-                <label for="hourlyRate">Hourly Rate</label>
-                <input type="number" step="0.01" class="form-control" id="hourlyRate" name="hourlyRate" required>
-            </div>
-
-            <div class="form-group">
-                <label for="notes">Additional Notes</label>
-                <textarea class="form-control" id="notes" name="notes"></textarea>
-            </div>
             <form method="post" action="/Home/SubmitClaim" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="hoursWorked">Hours Worked</label>
@@ -92,10 +76,6 @@
 
                 <button type="submit" class="btn btn-blue mt-4">Submit</button>
             </form>
-
-
-            <button type="submit" class="btn btn-blue mt-4">Submit</button>
-        </form>
     </div>
 </body>
 </html>

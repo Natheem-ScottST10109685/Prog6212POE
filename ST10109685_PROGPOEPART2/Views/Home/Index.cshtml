@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Role Selection - Contract Monthly Claim System (CMCS)</title>
+    <title>Home - Contract Monthly Claim System (CMCS)</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -30,28 +30,30 @@
                 font-weight: bold;
             }
 
-        .container {
+        .hero {
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
+            text-align: center;
         }
 
-        .dropdown, .btn {
-            margin: 20px;
+        h1 {
+            color: #2c5282;
         }
 
-        .btn-proceed {
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
             background-color: #2c5282;
             color: white;
-            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             font-weight: bold;
         }
 
-            .btn-proceed:hover {
+            .btn:hover {
                 background-color: #2b6cb0;
             }
     </style>
@@ -59,34 +61,13 @@
 <body>
     <nav class="navbar">
         <a href="/">Home</a>
-        <a href="#">Claim</a>
-        <a href="#">View All</a>
-        <a href="#">Report</a>
+        <a href="/Login/Login">Login</a>
     </nav>
 
-    <div class="container">
-        <h1>Please select your role</h1>
-        <select id="roleDropdown" class="form-control" style="max-width: 300px;">
-            <option value="">--Select Role--</option>
-            <option value="Lecturer">Lecturer</option>
-            <option value="ProgrammeCoordinator">Programme Coordinator</option>
-            <option value="AcademicManager">Academic Manager</option>
-        </select>
-        <button id="proceedButton" class="btn btn-proceed">Proceed</button>
+    <div class="hero">
+        <h1>Welcome to the Contract Monthly Claim System (CMCS)</h1>
+        <p>Your go-to platform for managing claims efficiently and effectively.</p>
+        <a href="/Login/Login" class="btn">Get Started</a>
     </div>
-
-    <script>
-        document.getElementById('proceedButton').addEventListener('click', function () {
-            var selectedRole = document.getElementById('roleDropdown').value;
-
-            if (selectedRole === 'Lecturer') {
-                window.location.href = '/Home/Claim'; // Redirect to Claim page for Lecturers
-            } else if (selectedRole === 'ProgrammeCoordinator' || selectedRole === 'AcademicManager') {
-                window.location.href = '/Home/CoordMange'; // Redirect to CoordMange page for others
-            } else {
-                alert('Please select a role.');
-            }
-        });
-    </script>
 </body>
 </html>

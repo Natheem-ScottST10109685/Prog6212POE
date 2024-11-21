@@ -1,5 +1,7 @@
 ﻿@model List<ST10109685_PROGPOEPART2.Models.ClaimModel>
-
+@{
+    Layout = null;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,67 @@
     <title>Manage Claims</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+    }
+
+    .navbar {
+        background-color: #2c5282;
+        color: white;
+        padding: 1rem;
+    }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+            .navbar a:hover {
+                color: #90cdf4;
+            }
+
+    h1 {
+        color: #2c5282;
+        margin-top: 20px;
+    }
+
+    .table th {
+        background-color: #2c5282;
+        color: white;
+    }
+
+    .btn-success {
+        background-color: #38a169;
+        border-color: #38a169;
+    }
+
+        .btn-success:hover {
+            background-color: #2f855a;
+            border-color: #2f855a;
+        }
+
+    .btn-danger {
+        background-color: #e53e3e;
+        border-color: #e53e3e;
+    }
+
+        .btn-danger:hover {
+            background-color: #c53030;
+            border-color: #c53030;
+        }
+</style>
 <body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/Home/CoordDashboard">Home</a>
+        <a href="/Login/Login">Log Out</a>
+    </div>
+    <!-- Claims -->
     <div class="container">
         <h1 class="text-center">Claims to Review</h1>
         <table class="table table-bordered">
@@ -19,7 +81,8 @@
                     <th>Hours Worked</th>
                     <th>Hourly Rate</th>
                     <th>Notes</th>
-                    <th>Status</th> <!-- Add status column -->
+                    <th>Supporting Document</th> <!-- New column -->
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -31,31 +94,30 @@
                         <td>@claim.LecturerName</td>
                         <td>@claim.HoursWorked</td>
                         <td>@claim.HourlyRate</td>
-                        <td>@claim.Notes</td>
-                        <td>@claim.Status</td> <!-- Display claim status -->
+                        <td>@claim.AdditionalNotes</td>
                         <td>
-                            <button class="btn btn-success" onclick="approveClaim(@claim.Id)">Approve</button>
-                            <button class="btn btn-danger" onclick="rejectClaim(@claim.Id)">Reject</button>
+                            @if (!string.IsNullOrEmpty(claim.SupportingDocument))
+                            {
+                                <a href="@Url.Content($"~/LecturerClaims/{claim.SupportingDocument}")" target="_blank">Download</a>
+                            }
+                            else
+                            {
+                                <span>No Document</span>
+                            }
+                        </td>
+                        <td>@claim.Status</td>
+                        <td>
+                            <form asp-action="ApproveReject" method="post">
+                                <input type="hidden" name="fileName" value="@claim.FileName" />
+                                <button type="submit" name="action" value="approve" class="btn btn-success">Approve</button>
+                                <button type="submit" name="action" value="reject" class="btn btn-danger">Reject</button>
+                            </form>
                         </td>
                     </tr>
                 }
             </tbody>
+
         </table>
     </div>
-    <!-- Script for handling claim approval/rejection -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function approveClaim(claimId) {
-            $.post("/Home/ApproveClaim", { id: claimId }, function (response) {
-                location.reload(); // Reload the page to reflect the updated status
-            });
-        }
-
-        function rejectClaim(claimId) {
-            $.post("/Home/RejectClaim", { id: claimId }, function (response) {
-                location.reload(); // Reload the page to reflect the updated status
-            });
-        }
-    </script>
 </body>
 </html>

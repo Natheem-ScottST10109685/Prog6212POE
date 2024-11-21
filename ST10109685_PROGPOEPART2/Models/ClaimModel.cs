@@ -5,29 +5,23 @@ namespace ST10109685_PROGPOEPART2.Models
     public class ClaimModel
     {
         public int Id { get; set; }
-
-        [Required]
         public string LecturerName { get; set; }
-
-        [Required]
-        [Range(1, 168)] // Max hours in a week
         public int HoursWorked { get; set; }
-
-        [Required]
-        [Range(0.01, 10000)] // Reasonable range for hourly rate
         public decimal HourlyRate { get; set; }
-        public string Notes { get; set; }
         public string AdditionalNotes { get; set; }
+        public string SupportingDocument { get; set; } // New field
         public string Status { get; set; }
         public string FileName { get; set; }
     }
 
-    // Then, let's define the IClaimService interface
+
+    // The IClaimService interface
     public interface IClaimService
     {
-        List<ClaimModel> GetAllClaims();
-        Task<string?> GetAllClaimsAsync();
-        ClaimModel GetClaimById(int id);
-        void UpdateClaim(ClaimModel claim);
+        List<ClaimModel> GetAllClaims(); // Fetch all claims synchronously
+        Task<List<ClaimModel>> GetAllClaimsAsync(); // Fetch all claims asynchronously
+        ClaimModel GetClaimByFileName(string fileName);
+        ClaimModel GetClaimById(int id); // Get a specific claim by ID
+        void UpdateClaim(ClaimModel claim); // Update claim details
     }
 }

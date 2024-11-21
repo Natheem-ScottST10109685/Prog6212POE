@@ -29,3 +29,7 @@ C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\ST10109685_PROGPOEPART
 C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\ST10109685_PROGPOEPART2\obj\Debug\net8.0\ST10109685_PROGPOEPART2.pdb
 C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\ST10109685_PROGPOEPART2\obj\Debug\net8.0\ST10109685_PROGPOEPART2.genruntimeconfig.cache
 C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\ST10109685_PROGPOEPART2\obj\Debug\net8.0\ref\ST10109685_PROGPOEPART2.dll
+C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\ST10109685_PROGPOEPART2\bin\Debug\net8.0\ST10109685_PROGPOEPART2.staticwebassets.endpoints.json
+C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\ST10109685_PROGPOEPART2\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\ST10109685_PROGPOEPART2\obj\Debug\net8.0\staticwebassets\msbuild.ST10109685_PROGPOEPART2.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\ST10109685_PROGPOEPART2\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

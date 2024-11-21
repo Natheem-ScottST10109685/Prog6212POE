@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\views\\home\\claim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:views\\home\\claim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\views\\home\\coordmange.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:views\\home\\coordmange.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\views\\home\\newclaim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:views\\home\\newclaim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\views\\home\\claimconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:views\\home\\claimconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\views\\home\\viewall.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:views\\home\\viewall.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,41 +46,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ViewAll.cshtml",
-              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\ViewAll.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\ViewAll.cshtml",
-              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\ViewAll.cshtml",
-              "RelativeToolTip": "Views\\Home\\ViewAll.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAHAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "ClaimConfirmation.cshtml",
+              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\ClaimConfirmation.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\ClaimConfirmation.cshtml",
+              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\ClaimConfirmation.cshtml",
+              "RelativeToolTip": "Views\\Home\\ClaimConfirmation.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-18T13:33:48.354Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Claim.cshtml",
-              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\Claim.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Claim.cshtml",
-              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\Claim.cshtml",
-              "RelativeToolTip": "Views\\Home\\Claim.cshtml",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAE0AAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-18T13:09:41.364Z",
+              "WhenOpened": "2024-11-21T10:45:45.446Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "NewClaim.cshtml",
+              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\NewClaim.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\NewClaim.cshtml",
+              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\NewClaim.cshtml",
+              "RelativeToolTip": "Views\\Home\\NewClaim.cshtml",
+              "ViewState": "AgIAADsAAAAAAAAAAAAiwC8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T10:38:48.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "Controllers\\LoginController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T10:30:46.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ViewAll.cshtml",
+              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\ViewAll.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\ViewAll.cshtml",
+              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\ViewAll.cshtml",
+              "RelativeToolTip": "Views\\Home\\ViewAll.cshtml",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAiwEMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T10:08:44.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CoordMange.cshtml",
+              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\CoordMange.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\CoordMange.cshtml",
+              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\CoordMange.cshtml",
+              "RelativeToolTip": "Views\\Home\\CoordMange.cshtml",
+              "ViewState": "AgIAADgAAAAAAAAAAAAiwGsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-20T13:46:44.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAmwCEAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAAwPQAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T12:55:27.69Z",
+              "WhenOpened": "2024-11-20T13:28:50.148Z",
               "EditorCaption": ""
             }
           ]

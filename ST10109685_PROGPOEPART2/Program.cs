@@ -1,5 +1,12 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using ST10109685_PROGPOEPART2.Controllers;
 using ST10109685_PROGPOEPART2.Models;
-using ST10109685_PROGPOEPART2.Services;
+//using ST10109685_PROGPOEPART2.Services;
 
 namespace ST10109685_PROGPOEPART2
 {
@@ -11,8 +18,29 @@ namespace ST10109685_PROGPOEPART2
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddScoped<IClaimService>(provider =>
-            new ClaimService(@"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims"));
+
+            // Retrieve ClaimDirectory from appsettings.json
+            var claimDirectory = builder.Configuration["ClaimDirectory"];
+            if (string.IsNullOrEmpty(claimDirectory))
+            {
+                throw new InvalidOperationException("ClaimDirectory is not configured in appsettings.json.");
+            }
+
+            // Register the IClaimService with the configured ClaimDirectory
+            builder.Services.AddScoped<IClaimService>(provider => new ClaimService(claimDirectory));
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+            {
+                options.LoginPath = "/Home/Login"; // Redirect here if not authenticated
+                options.AccessDeniedPath = "/Account/AccessDenied"; // Redirect here if access is denied
+             });
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("LecturerOnly", policy => policy.RequireRole("Lecturer"));
+                options.AddPolicy("CoordinatorOnly", policy => policy.RequireRole("ProgrammeCoordinator", "AcademicManager"));
+            });
 
             var app = builder.Build();
 
@@ -20,7 +48,6 @@ namespace ST10109685_PROGPOEPART2
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -29,6 +56,8 @@ namespace ST10109685_PROGPOEPART2
 
             app.UseRouting();
 
+            // Add authentication and authorization middleware
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

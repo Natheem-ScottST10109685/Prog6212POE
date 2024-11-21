@@ -1,13 +1,18 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using ST10109685_PROGPOEPART2.Models;
 using System.Diagnostics;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ST10109685_PROGPOEPART2.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly string claimDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims"; // Use your own File Path as this won't work if you use mine
+        private readonly string claimDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
         private readonly IClaimService _claimService;
 
         public HomeController(ILogger<HomeController> logger, IClaimService claimService)
@@ -16,9 +21,57 @@ namespace ST10109685_PROGPOEPART2.Controllers
             _claimService = claimService;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(string username, string password)
+        {
+            // Simulate authentication logic
+            if ((username == "lecturer" && password == "lecturer123") ||
+                (username == "coordinator" && password == "coordinator123") ||
+                (username == "manager" && password == "manager123"))
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, username),
+                    new Claim(ClaimTypes.Role, username == "lecturer" ? "Lecturer" :
+                                              username == "coordinator" ? "ProgrammeCoordinator" :
+                                                                          "AcademicManager")
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true
+                };
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.ErrorMessage = "Invalid username or password";
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login", "Account");
         }
 
         public IActionResult Privacy()
@@ -26,57 +79,116 @@ namespace ST10109685_PROGPOEPART2.Controllers
             return View();
         }
 
-        public IActionResult Claim()
+        [Authorize(Roles = "Lecturer")]
+        public IActionResult lecturerDashBoard()
         {
             return View();
         }
 
+        [Authorize(Roles = "Lecturer")]
         public IActionResult ViewAll()
         {
-            return View();
-        }
-
-        public IActionResult CoordDashboard()
-        {
-            return View();
-        }
-
-        public IActionResult CoordMange()
-        {
-            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims"; // Use your own File Path as this won't work if you use mine
+            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
             var claims = new List<ClaimModel>();
 
             string[] claimFiles = Directory.GetFiles(claimsDirectory, "*.txt");
-            int lecturerCounter = 1;
 
             foreach (var filePath in claimFiles)
             {
                 string[] claimDetails = System.IO.File.ReadAllLines(filePath);
 
-                // Proper parsing of string values to correct types
-                int hoursWorked;
-                decimal hourlyRate;
-
-                // Use TryParse to safely convert strings to numbers
-                int.TryParse(claimDetails[0], out hoursWorked);
-                decimal.TryParse(claimDetails[1], out hourlyRate);
-
-                var claim = new ClaimModel
+                try
                 {
-                    LecturerName = "Lecturer " + lecturerCounter,
-                    HoursWorked = hoursWorked,
-                    HourlyRate = hourlyRate,
-                    AdditionalNotes = claimDetails[2],
-                    FileName = Path.GetFileName(filePath)
-                };
+                    var claim = new ClaimModel
+                    {
+                        LecturerName = claimDetails[0].Split(':')[1].Trim(),
+                        HoursWorked = ParseIntField(claimDetails, "Hours Worked"),
+                        HourlyRate = ParseDecimalField(claimDetails, "Hourly Rate"),
+                        AdditionalNotes = ParseStringField(claimDetails, "Additional Notes"),
+                        SupportingDocument = ParseStringField(claimDetails, "Supporting Document"),
+                        Status = ParseStringField(claimDetails, "Status") ?? "Pending",
+                        FileName = Path.GetFileName(filePath)
+                    };
 
-                claims.Add(claim);
+                    claims.Add(claim);
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine($"Error parsing file {filePath}: {ex.Message}");
+                }
+            }
+
+            return View(claims);
+        }
+
+
+        [Authorize(Roles = "ProgrammeCoordinator,AcademicManager")]
+        public IActionResult CoordDashboard()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "ProgrammeCoordinator,AcademicManager")]
+        public IActionResult CoordMange()
+        {
+            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+            var claims = new List<ClaimModel>();
+
+            // Get all text files in the directory
+            string[] claimFiles = Directory.GetFiles(claimsDirectory, "*.txt");
+            int lecturerCounter = 1;
+
+            foreach (var filePath in claimFiles)
+            {
+                try
+                {
+                    string[] claimDetails = System.IO.File.ReadAllLines(filePath);
+
+                    var claim = new ClaimModel
+                    {
+                        Id = lecturerCounter, // Use counter as ID
+                        LecturerName = $"Lecturer {lecturerCounter}",
+                        HoursWorked = ParseIntField(claimDetails, "Hours Worked"),
+                        HourlyRate = ParseDecimalField(claimDetails, "Hourly Rate"),
+                        AdditionalNotes = ParseStringField(claimDetails, "Additional Notes"),
+                        SupportingDocument = ParseStringField(claimDetails, "Supporting Document"),
+                        FileName = Path.GetFileName(filePath),
+                        Status = ParseStringField(claimDetails, "Status") ?? "Pending"
+                    };
+
+                    claims.Add(claim);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error processing file {filePath}: {ex.Message}");
+                }
                 lecturerCounter++;
             }
 
             return View(claims);
         }
 
+        // Helper methods to parse fields
+        private int ParseIntField(string[] details, string fieldName)
+        {
+            var field = details.FirstOrDefault(line => line.StartsWith($"{fieldName}:"));
+            return field != null ? int.Parse(field.Split(':')[1].Trim()) : 0;
+        }
+
+        private decimal ParseDecimalField(string[] details, string fieldName)
+        {
+            var field = details.FirstOrDefault(line => line.StartsWith($"{fieldName}:"));
+            return field != null ? decimal.Parse(field.Split(':')[1].Trim()) : 0;
+        }
+
+        private string ParseStringField(string[] details, string fieldName)
+        {
+            var field = details.FirstOrDefault(line => line.StartsWith($"{fieldName}:"));
+            return field != null ? field.Split(':')[1].Trim() : null;
+        }
+
+
+        [Authorize(Roles = "Lecturer")]
         public IActionResult NewClaim()
         {
             return View();
@@ -86,7 +198,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
         public IActionResult SubmitClaim(int hoursWorked, decimal hourlyRate, string notes, IFormFile supportingDocument)
         {
             // Directory path where claims will be saved
-            string claimDirectory = "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\LecturerClaims"; // Use your own File Path as this won't work if you use mine
+            string claimDirectory = "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\LecturerClaims";
 
             // Ensure the directory exists
             if (!Directory.Exists(claimDirectory))
@@ -131,7 +243,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
             System.IO.File.WriteAllText(filePath, content);
 
             // Redirect to confirmation page
-            return RedirectToAction("ClaimConfirmation");
+            return RedirectToAction("lecturerDashBoard");
         }
 
         public IActionResult ClaimConfirmation()
@@ -142,43 +254,55 @@ namespace ST10109685_PROGPOEPART2.Controllers
         [HttpPost]
         public IActionResult ApproveReject(string fileName, string action)
         {
-            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims"; // Use your own File Path as this won't work if you use mine
+            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
             string filePath = Path.Combine(claimsDirectory, fileName);
 
             // Read the existing content
             var claimDetails = System.IO.File.ReadAllLines(filePath).ToList();
 
-            // Add approval or rejection status at the end
-            claimDetails.Add(action == "approve" ? "Approved" : "Rejected");
+            // Check if status is already set
+            bool statusExists = claimDetails.Any(line => line.StartsWith("Status:"));
 
-            // Write the updated content back to the file
-            System.IO.File.WriteAllLines(filePath, claimDetails);
+            // Update the status if not already set
+            if (!statusExists)
+            {
+                string status = action.Equals("approve", StringComparison.OrdinalIgnoreCase) ? "Approved" : "Rejected";
+                claimDetails.Add($"Status: {status}");
 
-            // Redirect to the confirmation view
-            return View("CoordDashboard");
+                // Write the updated content back to the file
+                System.IO.File.WriteAllLines(filePath, claimDetails);
+            }
+
+            // Redirect to CoordMange to show updated claims
+            return RedirectToAction("CoordMange");
         }
 
         [HttpPost]
         public IActionResult ApproveClaim(int id)
         {
-            // Update the claim status to 'Approved'
             var claim = _claimService.GetClaimById(id);
-            claim.Status = "Approved";
-            _claimService.UpdateClaim(claim);
+            if (claim != null)
+            {
+                claim.Status = "Approved";
+                _claimService.UpdateClaim(claim);
+            }
 
-            return Ok();
+            return Ok(); // Return 200 status to indicate success
         }
 
         [HttpPost]
         public IActionResult RejectClaim(int id)
         {
-            // Update the claim status to 'Rejected'
             var claim = _claimService.GetClaimById(id);
-            claim.Status = "Rejected";
-            _claimService.UpdateClaim(claim);
+            if (claim != null)
+            {
+                claim.Status = "Rejected";
+                _claimService.UpdateClaim(claim);
+            }
 
-            return Ok();
+            return Ok(); // Return 200 status to indicate success
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
