@@ -13,3 +13,5 @@ Once you submit the claim select the option to return the Home page or click Hom
 
 The local file Path will allow you to store the text files of the Lecturer claims and then the claims will be called to the CoordMange.cshtml and will be display in a table form.
 
+My View All button was not working and I was unable to fix it. So When you select the lecturer role and proceed to the Claim.cshtml you will not be able to view all the claims or generate a report. You can only submit claims. I will fix it after I post it so I will have more time till the final POE Submission.
+
