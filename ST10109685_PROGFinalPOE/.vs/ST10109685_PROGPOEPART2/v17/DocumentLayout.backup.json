@@ -1,0 +1,96 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\views\\home\\generatereports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:views\\home\\generatereports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\views\\home\\managelecturerdata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:views\\home\\managelecturerdata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|c:\\users\\natheem scott\\desktop\\2ndyear\\new content\\prog2b\\st10109685_progpoepart2\\views\\home\\hrdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{979E0323-C905-40BF-91CC-89F7F8CAB5E8}|ST10109685_PROGPOEPART2.csproj|solutionrelative:views\\home\\hrdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GenerateReports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\GenerateReports.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\GenerateReports.cshtml",
+              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\GenerateReports.cshtml",
+              "RelativeToolTip": "Views\\Home\\GenerateReports.cshtml",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAIwJ0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-22T08:46:43.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HRDashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\HRDashboard.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\HRDashboard.cshtml",
+              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\HRDashboard.cshtml",
+              "RelativeToolTip": "Views\\Home\\HRDashboard.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAIwDkAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-22T08:39:14.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ManageLecturerData.cshtml",
+              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\ManageLecturerData.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\ManageLecturerData.cshtml",
+              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Views\\Home\\ManageLecturerData.cshtml",
+              "RelativeToolTip": "Views\\Home\\ManageLecturerData.cshtml",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAAAOUAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-22T06:49:20.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\ST10109685_PROGPOEPART2\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAMEBAAAAAAAAAAAwwO0BAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T13:28:50.148Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

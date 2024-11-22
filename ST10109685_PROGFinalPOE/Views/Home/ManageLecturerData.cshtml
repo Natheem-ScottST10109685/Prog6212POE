@@ -1,0 +1,230 @@
+﻿@model List<ST10109685_PROGPOEPART2.Models.ClaimModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Lecturer Data</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .editable:hover {
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+
+        .edit-input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #007bff;
+        }
+
+        .edit-controls {
+            display: none;
+            margin-top: 5px;
+        }
+
+        .edit-row .edit-controls {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .readonly {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+
+        .navbar {
+            background-color: #2c5282;
+            color: white;
+            padding: 1rem;
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                margin-right: 20px;
+                font-weight: bold;
+            }
+
+                .navbar a:hover {
+                    color: #90cdf4;
+                }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/Home/HRDashboard">Home</a>
+        <a href="/Login/Login">Log Out</a>
+    </div>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Manage Lecturer Data</h1>
+
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+        }
+
+        @Html.AntiForgeryToken()
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Lecturer Name</th>
+                    <th>Hours Worked</th>
+                    <th>Hourly Rate</th>
+                    <th>Contact Info</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="7" class="text-center">No approved claims found.</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var claim in Model)
+                    {
+                        <tr id="row-@claim.Id" data-filename="@claim.FileName">
+                            <td class="editable" data-field="LecturerName">@claim.LecturerName</td>
+                            <td class="readonly" data-field="HoursWorked">@claim.HoursWorked</td>
+                            <td class="readonly" data-field="HourlyRate">@claim.HourlyRate.ToString("F2")</td>
+                            <td class="editable" data-field="ContactInfo">@claim.ContactInfo</td>
+                            <td>@claim.TotalAmount.ToString("C")</td>
+                            <td>@claim.Status</td>
+                            <td>
+                                <button class="btn btn-primary edit-btn" onclick="editRow('@claim.Id')">Edit</button>
+                                <div class="btn-group edit-actions hidden">
+                                    <button class="btn btn-success save-btn" onclick="saveChanges('@claim.Id')">Save</button>
+                                    <button class="btn btn-danger cancel-btn" onclick="cancelEdit('@claim.Id')">Cancel</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let originalData = {};
+        let currentEditingId = null;
+
+        function editRow(id) {
+            // If another row is being edited, cancel it first
+            if (currentEditingId && currentEditingId !== id) {
+                cancelEdit(currentEditingId);
+            }
+
+            const row = document.querySelector(`#row-${id}`);
+            const editableCells = row.querySelectorAll('.editable');
+            const editBtn = row.querySelector('.edit-btn');
+            const editActions = row.querySelector('.edit-actions');
+
+            // Store original data
+            originalData[id] = {};
+            editableCells.forEach(cell => {
+                originalData[id][cell.dataset.field] = cell.textContent;
+            });
+
+            // Make editable cells editable
+            editableCells.forEach(cell => {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'form-control';
+                input.value = cell.textContent;
+                input.dataset.original = cell.textContent;
+                cell.textContent = '';
+                cell.appendChild(input);
+            });
+
+            // Show save/cancel buttons, hide edit button
+            editBtn.classList.add('hidden');
+            editActions.classList.remove('hidden');
+            currentEditingId = id;
+        }
+
+        function saveChanges(id) {
+            const row = document.querySelector(`#row-${id}`);
+            const fileName = row.dataset.filename;
+            const updatedData = {};
+            const editableCells = row.querySelectorAll('.editable');
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            // Collect updated data
+            editableCells.forEach(cell => {
+                const input = cell.querySelector('input');
+                updatedData[cell.dataset.field] = input.value;
+            });
+
+            // Send update to server
+            fetch('/Home/UpdateLecturerData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token
+                },
+                body: JSON.stringify({
+                    fileName: fileName,
+                    field: updatedData
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Update the UI with new values
+                editableCells.forEach(cell => {
+                    const input = cell.querySelector('input');
+                    cell.textContent = input.value;
+                });
+
+                // Reset edit state
+                const editBtn = row.querySelector('.edit-btn');
+                const editActions = row.querySelector('.edit-actions');
+                editBtn.classList.remove('hidden');
+                editActions.classList.add('hidden');
+                currentEditingId = null;
+
+                alert('Changes saved successfully!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to save changes. Please try again.');
+                cancelEdit(id);
+            });
+        }
+
+        function cancelEdit(id) {
+            const row = document.querySelector(`#row-${id}`);
+            const editableCells = row.querySelectorAll('.editable');
+            const editBtn = row.querySelector('.edit-btn');
+            const editActions = row.querySelector('.edit-actions');
+
+            // Restore original values
+            editableCells.forEach(cell => {
+                cell.textContent = originalData[id][cell.dataset.field];
+            });
+
+            // Reset UI state
+            editBtn.classList.remove('hidden');
+            editActions.classList.add('hidden');
+            currentEditingId = null;
+        }
+    </script>
+</body>
+</html>

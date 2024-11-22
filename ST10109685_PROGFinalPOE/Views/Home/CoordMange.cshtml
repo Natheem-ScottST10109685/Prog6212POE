@@ -1,0 +1,131 @@
+﻿@model List<ST10109685_PROGPOEPART2.Models.ClaimModel>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Claims</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+    }
+
+    .navbar {
+        background-color: #2c5282;
+        color: white;
+        padding: 1rem;
+    }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+            .navbar a:hover {
+                color: #90cdf4;
+            }
+
+    h1 {
+        color: #2c5282;
+        margin-top: 20px;
+    }
+
+    .table th {
+        background-color: #2c5282;
+        color: white;
+    }
+
+    .btn-success {
+        background-color: #38a169;
+        border-color: #38a169;
+    }
+
+        .btn-success:hover {
+            background-color: #2f855a;
+            border-color: #2f855a;
+        }
+
+    .btn-danger {
+        background-color: #e53e3e;
+        border-color: #e53e3e;
+    }
+
+        .btn-danger:hover {
+            background-color: #c53030;
+            border-color: #c53030;
+        }
+</style>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/Home/CoordDashboard">Home</a>
+        <a href="/Login/Login">Log Out</a>
+    </div>
+    <!-- Claims -->
+    <div class="container">
+        <h1 class="text-center">Claims to Review</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Lecturer Name</th>
+                    <th>Hours Worked</th>
+                    <th>Hourly Rate</th>
+                    <th>Notes</th>
+                    <th>Total Amount</th>
+                    <th>Supporting Document</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var claim in Model)
+                {
+                    <tr class="@((claim.Status == "Auto-Approved") ? "table-success" : "table-warning")">
+                        <td>@claim.Id</td>
+                        <td>@claim.LecturerName</td>
+                        <td>@claim.HoursWorked</td>
+                        <td>@claim.HourlyRate.ToString("F2")</td>
+                        <td>@claim.AdditionalNotes</td>
+                        <td>@claim.TotalAmount.ToString("C")</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(claim.SupportingDocument))
+                            {
+                                <a href="@Url.Content($"~/LecturerClaims/{claim.SupportingDocument}")" target="_blank">Download</a>
+                            }
+                            else
+                            {
+                                <span>No Document</span>
+                            }
+                        </td>
+                        <td>@claim.Status</td>
+                        <td>
+                            @if (claim.Status == "Needs Review")
+                            {
+                                <form asp-action="ApproveReject" method="post">
+                                    <input type="hidden" name="fileName" value="@claim.FileName" />
+                                    <button type="submit" name="action" value="approve" class="btn btn-success">Approve</button>
+                                    <button type="submit" name="action" value="reject" class="btn btn-danger">Reject</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <span class="text-muted">No Action Required</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

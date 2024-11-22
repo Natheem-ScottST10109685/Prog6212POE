@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #2c5282;
+            color: white;
+            padding: 1rem;
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                margin-right: 20px;
+                font-weight: bold;
+            }
+
+                .navbar a:hover {
+                    color: #90cdf4;
+                }
+
+        h1 {
+            color: #2c5282;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: #2c5282;
+            border-color: #2c5282;
+        }
+
+            .btn-primary:hover {
+                background-color: #2b6cb0;
+                border-color: #2b6cb0;
+            }
+
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/Home/HRDashboard">Home</a>
+        <a href="/Login/Login">Log Out</a>
+    </div>
+    <div class="container text-center mt-5">
+        <h1>HR Dashboard</h1>
+        <p class="lead">Streamline administrative processes and manage lecturer data efficiently.</p>
+        <div class="mt-4">
+            <a href="/Home/ManageLecturerData" class="btn btn-primary btn-lg">Manage Lecturer Data</a>
+            <a href="/Home/GenerateReports" class="btn btn-secondary btn-lg">Generate Reports</a>
+        </div>
+    </div>
+</body>
+</html>

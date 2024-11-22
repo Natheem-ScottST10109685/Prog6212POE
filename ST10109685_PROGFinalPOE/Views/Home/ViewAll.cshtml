@@ -1,0 +1,71 @@
+﻿@model List<ST10109685_PROGPOEPART2.Models.ClaimModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Claims</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/Home/lecturerDashBoard">Home</a>
+        @if (User.IsInRole("Lecturer"))
+        {
+            <a href="/Login/Login">Logout</a>
+        }
+        else if (User.IsInRole("ProgrammeCoordinator") || User.IsInRole("AcademicManager"))
+        {
+            <a href="/Coordinator/CoordDashboard">Dashboard</a>
+            <a href="/Coordinator/CoordMange">Manage</a>
+        }
+    </nav>
+    <div class="container">
+        <h1 class="text-center">All Claims</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Hours Worked</th>
+                    <th>Hourly Rate</th>
+                    <th>Additional Notes</th>
+                    <th>Supporting Document</th>
+                    <th>Status</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    var claim = Model[i];
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@claim.HoursWorked</td>
+                        <td>@claim.HourlyRate.ToString("F2")</td>
+                        <td>@claim.AdditionalNotes</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(claim.SupportingDocument))
+                            {
+                                <a href="@Url.Content($"~/LecturerClaims/{claim.SupportingDocument}")" target="_blank">
+                                    @claim.SupportingDocument
+                                </a>
+                            }
+                            else
+                            {
+                                <span>No Document</span>
+                            }
+                        </td>
+
+                        <td>@claim.Status</td>
+                        <td>@claim.TotalAmount.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
