@@ -13,7 +13,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly string claimDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+        private readonly string claimDirectory = @"Your own Local path";
         private readonly IClaimService _claimService;
 
         public HomeController(ILogger<HomeController> logger, IClaimService claimService)
@@ -101,7 +101,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
         [Authorize(Roles = "Lecturer")]
         public IActionResult ViewAll()
         {
-            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+            string claimsDirectory = @"Your own Local path";
             var claims = new List<ClaimModel>();
 
             string[] claimFiles = Directory.GetFiles(claimsDirectory, "*.txt");
@@ -163,7 +163,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
             decimal totalAmount = hoursWorked * hourlyRateValue;
 
             // Directory path where claims will be saved
-            string claimDirectory = "C:\\Users\\Natheem Scott\\Desktop\\2ndyear\\New Content\\PROG2B\\LecturerClaims";
+            string claimDirectory = "Your own Local path";
 
             // Ensure the directory exists
             if (!Directory.Exists(claimDirectory))
@@ -224,7 +224,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
         [Authorize(Roles = "ProgrammeCoordinator,AcademicManager")]
         public IActionResult CoordMange()
         {
-            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+            string claimsDirectory = @"Your own Local path";
             var claims = new List<ClaimModel>();
 
             // Define verification rules
@@ -329,7 +329,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
         [HttpPost]
         public IActionResult ApproveReject(string fileName, string action)
         {
-            string claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+            string claimsDirectory = @"Your own Local path";
             string filePath = Path.Combine(claimsDirectory, fileName);
 
             // Read the existing content
@@ -391,7 +391,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
         {
             try
             {
-                var claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+                var claimsDirectory = @"Your own Local path";
                 var claims = new List<ClaimModel>();
                 int lecturerCounter = 1;
 
@@ -455,7 +455,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
         {
             try
             {
-                string filePath = Path.Combine(@"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims", fileName);
+                string filePath = Path.Combine(@"Your own Local path", fileName);
 
                 if (!System.IO.File.Exists(filePath))
                 {
@@ -495,7 +495,7 @@ namespace ST10109685_PROGPOEPART2.Controllers
         {
             try
             {
-                var claimsDirectory = @"C:\Users\Natheem Scott\Desktop\2ndyear\New Content\PROG2B\LecturerClaims";
+                var claimsDirectory = @"Your own Local path";
                 var claims = new List<ClaimModel>();
                 int lecturerCounter = 1;
 
